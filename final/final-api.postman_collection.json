@@ -1,0 +1,518 @@
+{
+	"info": {
+		"_postman_id": "c89676f5-b3c0-4210-af9e-3a1f644fca81",
+		"name": "final-api",
+		"description": "Api creada para el proyecto final de la etapa 3 del informatorio. Consiste en un API para usuarios, comentarios y posts.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "/api/v1/usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"alta\": \"2020-12-25\",\n\t\"apellido\": \"Fernandez\",\n\t\"ciudad\": \"Resistencia\",\n\t\"provincia\": \"Chaco\",\n\t\"pais\": \"Argentina\",\n\t\"nombre\": \"Juan\",\n\t\"email\": \"juan@gmail.com\",\n\t\"password\": \"1234\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/usuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/usuario/1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/usuario/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/usuario/2",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"alta\": \"2020-12-25\",\n\t\"apellido\": \"Fernandez\",\n\t\"ciudad\": \"Resistencia\",\n\t\"provincia\": \"Chaco\",\n\t\"pais\": \"Argentina\",\n\t\"nombre\": \"Juan2\",\n\t\"email\": \"juan@gmail.com\",\n\t\"password\": \"1234\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/usuario/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"2"
+							]
+						},
+						"description": "Para este paso se debe crear un nuevo usuario, ya que en el paso anterior se hizo una eliminacion del usuario. Pero dependiendo de las pruebas puede varias el id, en este caso tiene el id: 2 la prueba."
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/usuario/ciudad/Resistencia",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/usuario/ciudad/Resistencia",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"ciudad",
+								"Resistencia"
+							]
+						},
+						"description": "Consulta (obtener todos los usuarios de la ciudad de Resistencia)."
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/usuario/despues-alta?date=2020-12-24",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/usuario/despues-alta?date=2020-12-24",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"despues-alta"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2020-12-24"
+								}
+							]
+						},
+						"description": "Consulta (obtener todos los usuarios que fueron creados luego de una fecha dada)."
+					},
+					"response": []
+				}
+			],
+			"description": "Pruebas de API para usuarios"
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "/api/v1/post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/post",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"post"
+							]
+						},
+						"description": "Consulta: obtner todos los Posts"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/usuario/2/post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"titulo\": \"Java 11\",\n\t\"descripcion\": \"Vino para quedarse\",\n\t\"contenido\": \"Lorem ipsum dolor sit amet consectetur adipiscing\",\n\t\"alta\": \"2020-12-25\",\n\t\"publicado\": false\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/usuario/2/post",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"2",
+								"post"
+							]
+						},
+						"description": "Es la creación de un post por medio de un endpoint de usuario en este caso se pasa como parámetro el id del usuario: 2."
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/post/sin-publicar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/post/sin-publicar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"post",
+								"sin-publicar"
+							]
+						},
+						"description": "Trae todos los Posts sin publicar"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/post/palabra-titulo/Java",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/post/palabra-titulo/Java",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"post",
+								"palabra-titulo",
+								"Java"
+							]
+						},
+						"description": "Consulta: obtener todos los Posts que contenga una palabra dada en el título."
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/post/2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"titulo\": \"Java 8\",\n\t\"descripcion\": \"Encontra todo lo referido a este entorno\",\n\t\"contenido\": \"Lorem ipsum dolor sit amet consectetur adipiscing elit\",\n\t\"alta\": \"2020-12-25\",\n\t\"publicado\": false\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/post/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"post",
+								"2"
+							]
+						},
+						"description": "Consulta: para crear un post con un endpoint de Post, en donde se pasa por parámetro el id de usuario, en este caso el usuario id: 2."
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/post/1",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"Java 8\",\r\n    \"descripcion\": \"Todo en detalle\",\r\n    \"contenido\": \"Nec a urna varius mus, enim lacus himenaeos accumsan\",\r\n    \"publicado\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/post/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"post",
+								"1"
+							]
+						},
+						"description": "Consutla para actualizar el recurso Post."
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/post/1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/post/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"post",
+								"1"
+							]
+						},
+						"description": "Consulta: para eliminar. Aclaración acá tuve que poner en el modelo de usuaurio que borre en cascada los posts relacionados al usuario de otra forma no me permitía relación esté endpoint, no sé si es la mejor forma, pero es la que enconctré para poder realizar la eliminación de un Post."
+					},
+					"response": []
+				}
+			],
+			"description": "Pruebas de API para los posts"
+		},
+		{
+			"name": "Comentarios",
+			"item": [
+				{
+					"name": "/api/v1/comentario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/comentario",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"comentario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/comentario/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/comentario/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"comentario",
+								"1"
+							]
+						},
+						"description": "Consulta: obtener todos los comentarios de un post. En donde el 1er parámetro representa el id del Post, en este caso el Post id: 1."
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/comentario/1/2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/comentario/1/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"comentario",
+								"1",
+								"2"
+							]
+						},
+						"description": "Consulta: obtener todos los comentarios de un Post, en donde el 1er parámetro es el id del Post, en este caso Post id: 1 y el 2do parámetro representa el límite, en este caso límite: 2."
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/comentario/2/2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"mensaje\": \"Este es un comentario\",\n\t\"alta\": \"2020-12-25\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/comentario/2/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"comentario",
+								"2",
+								"2"
+							]
+						},
+						"description": "Consulta: para crear un comentario.\r\n\r\nAclración: aquí funciona a medias el endpoint, es decir crea el comentario, pero arroja un status code: 500, esto creo que está relacionado al tipo de inicialización del fetch = FetchType.LAZY en el modelo de comentario, pero no estoy seguro."
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/comentario/2",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"mensaje\": \"Este es un comentario2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/comentario/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"comentario",
+								"2"
+							]
+						},
+						"description": "Consulta: para actualizar el recurso comentario."
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/comentario/2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/comentario/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"comentario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Pruebas de API para comentarios"
+		}
+	]
+}

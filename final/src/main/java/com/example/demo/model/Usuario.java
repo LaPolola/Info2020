@@ -18,7 +18,7 @@ public class Usuario {
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Post> posts = new ArrayList<>();
 
     @Column(nullable = false)
