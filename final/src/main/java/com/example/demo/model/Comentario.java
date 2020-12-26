@@ -8,6 +8,11 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 @Entity
 @Table(name = "comentario")
 public class Comentario {
@@ -31,8 +36,10 @@ public class Comentario {
     @Column(nullable = false)
     private String email;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", referencedColumnName = "id", nullable = false)
+    @NotFound(action = NotFoundAction.IGNORE)
+    @JsonIgnore
     private Post post;
 
     public Long getId() {
@@ -74,6 +81,7 @@ public class Comentario {
     }
 
     public void setAutor(Usuario autor) {
+        this.setEmail(autor.getEmail());
         this.autor = autor;
     }
 

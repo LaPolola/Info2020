@@ -27,6 +27,12 @@ public class ComentarioController {
     @Autowired
     private ComentarioRepository comentarioRepository;
 
+    @GetMapping
+    public ResponseEntity<?> obtener() {
+        List<Comentario> comentario = comentarioRepository.findAll();
+        return new ResponseEntity<>(comentario, HttpStatus.OK);
+    }
+
     @GetMapping("/{postId}/{limite}")
     public ResponseEntity<?> obtenerLista(@PathVariable("postId") Long postId, @PathVariable("limite") int limite) {
         List<Comentario> comentario = comentarioRepository.obtenerComentario(postId, limite);
@@ -43,9 +49,9 @@ public class ComentarioController {
     @PostMapping("/{postId}/{usuarioId}")
     public ResponseEntity<?> crear(@PathVariable Long postId, @PathVariable Long usuarioId, @RequestBody Comentario comentario) {
         Usuario usuario = usuarioRepository.getOne(usuarioId);
+        comentario.setAutor(usuario);
         Post post = postRepository.getOne(postId);
         comentario.setPost(post);
-        comentario.setAutor(usuario);
         return new ResponseEntity<>(comentarioRepository.save(comentario), HttpStatus.CREATED);
     }
 
