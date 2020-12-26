@@ -28,7 +28,7 @@ public class ComentarioController {
     private ComentarioRepository comentarioRepository;
 
     @GetMapping("/{postId}/{limite}")
-    public ResponseEntity<?> obtenerLista(@PathVariable("posId") Long postId, @PathVariable("limite") int limite) {
+    public ResponseEntity<?> obtenerLista(@PathVariable("postId") Long postId, @PathVariable("limite") int limite) {
         List<Comentario> comentario = comentarioRepository.obtenerComentario(postId, limite);
         return new ResponseEntity<>(comentario, HttpStatus.OK);
     }
