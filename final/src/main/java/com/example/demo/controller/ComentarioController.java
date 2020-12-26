@@ -34,7 +34,7 @@ public class ComentarioController {
     }
 
     @GetMapping("/{postId}")
-    public ResponseEntity<?> obtenerLista(@PathVariable("posId") Long postId) {
+    public ResponseEntity<?> obtenerLista(@PathVariable("postId") Long postId) {
         List<Comentario> comentario = comentarioRepository.obtenerComentario(postId);
         return new ResponseEntity<>(comentario, HttpStatus.OK);
     }
