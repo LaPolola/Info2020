@@ -1,10 +1,12 @@
-package com.example.demo.models;
+package com.example.demo.model;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -13,12 +15,15 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @Table(name = "usuario")
-public class UsuarioModel {
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
+
+    @OneToMany
+    private List<Post> posts = new ArrayList<>();
 
     @Column(nullable = false)
     private String nombre;
@@ -82,6 +87,10 @@ public class UsuarioModel {
         this.password = password;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public String getAlta() {
         Date date = Calendar.getInstance().getTime();
         return new SimpleDateFormat("yyyy-MM-dd").format(date);
@@ -123,4 +132,9 @@ public class UsuarioModel {
     public void setPais(String pais) {
         this.pais = pais;
     }
+
+    public void addPost(Post post) {
+        this.posts.add(post);
+        post.setAutor(this);
+      }
 }
