@@ -1,11 +1,7 @@
 package com.example.demo.model;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -38,9 +34,8 @@ public class Usuario {
     @Column(nullable = false)
     private String password;
 
-    @Temporal(TemporalType.DATE)
-    @Column(nullable = false)
-    private Calendar alta;
+    @Column(updatable = false, nullable = false)
+    private LocalDate alta = LocalDate.now();
 
     @Column(nullable = false)
     private String ciudad;
@@ -91,22 +86,12 @@ public class Usuario {
         return password;
     }
 
-    public String getAlta() {
-        Date date = Calendar.getInstance().getTime();
-        return new SimpleDateFormat("yyyy-MM-dd").format(date);
+    public LocalDate getAlta() {
+        return alta;
     }
 
-    public void setAlta(String alta) {
-        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date;
-        try {
-            date = sdf.parse(alta);
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
-            this.alta = cal;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    public void setAlta(LocalDate alta) {
+        this.alta = alta;
     }
 
     public String getCiudad() {

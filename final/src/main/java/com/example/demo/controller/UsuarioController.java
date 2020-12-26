@@ -1,11 +1,7 @@
 package com.example.demo.controller;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
-import java.text.ParseException;
 
 import com.example.demo.model.Post;
 import com.example.demo.model.Usuario;
@@ -13,6 +9,7 @@ import com.example.demo.repository.PostRepository;
 import com.example.demo.repository.UsuarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,19 +42,10 @@ public class UsuarioController {
         return new ResponseEntity<>(postRepository.save(post), HttpStatus.CREATED);
     }
 
-    @GetMapping("/despues-alta/{alta}")
-    public ResponseEntity<?> obtenerUsuarioPorDespuesAlta(@PathVariable("alta") String alta) {
-        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date;
-        Calendar cal = null;
-        try {
-            date = sdf.parse(alta);
-            cal = Calendar.getInstance();
-            cal.setTime(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        List<Usuario> usuarios = usuarioRepository.findByAltaAfter(cal);
+    @GetMapping("/despues-alta")
+    public ResponseEntity<?> obtenerUsuarioPorDespuesAlta(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        List<Usuario> usuarios = usuarioRepository.findByAltaAfter(date);
         return new ResponseEntity<>(usuarios, HttpStatus.OK);
     }
 
@@ -85,7 +73,6 @@ public class UsuarioController {
         usuarioEditado.setApellido(usuario.getApellido());
         usuarioEditado.setCiudad(usuario.getCiudad());
         usuarioEditado.setProvincia(usuario.getProvincia());
-        usuarioEditado.setAlta(usuario.getAlta());
         usuarioEditado.setEmail(usuario.getEmail());
         usuarioEditado.setPais(usuario.getPais());
         usuarioEditado.setPassword(usuario.getPassword());

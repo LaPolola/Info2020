@@ -43,9 +43,7 @@ public class PostController {
         postEdit.setTitulo(post.getTitulo());
         postEdit.setDescripcion(post.getDescripcion());
         postEdit.setContenido(post.getContenido());
-        postEdit.setAlta(post.getAlta());
         postEdit.isPublicado(post.getPublicado());
-        postEdit.setAutor(post.getAutor());
         return new ResponseEntity<>(postRepository.save(postEdit), HttpStatus.OK);
     }
 

@@ -60,9 +60,6 @@ public class ComentarioController {
     public ResponseEntity<?> editar(@PathVariable("id") Long id, @RequestBody Comentario comentario) {
         Comentario comentarioEdit = comentarioRepository.getOne(id);
         comentarioEdit.setMensaje(comentario.getMensaje());
-        comentarioEdit.setAutor(comentario.getAutor());
-        comentarioEdit.setPost(comentario.getPost());
-        comentarioEdit.setAlta(comentario.getAlta());
         return new ResponseEntity<>(comentarioRepository.save(comentarioEdit), HttpStatus.OK);
     }
 
