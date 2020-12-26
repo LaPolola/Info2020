@@ -53,7 +53,7 @@
 					"response": []
 				},
 				{
-					"name": "/api/v1/usuario/1",
+					"name": "/api/v1/usuario/{usuario_id}",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -75,7 +75,7 @@
 					"response": []
 				},
 				{
-					"name": "/api/v1/usuario/2",
+					"name": "/api/v1/usuario/{usuario_id}",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -108,7 +108,7 @@
 					"response": []
 				},
 				{
-					"name": "/api/v1/usuario/ciudad/Resistencia",
+					"name": "/api/v1/usuario/ciudad/{nombre_ciudad}",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -131,7 +131,7 @@
 					"response": []
 				},
 				{
-					"name": "/api/v1/usuario/despues-alta?date=2020-12-24",
+					"name": "/api/v1/usuario/despues-alta?date={fecha_alta}",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -155,6 +155,38 @@
 							]
 						},
 						"description": "Consulta (obtener todos los usuarios que fueron creados luego de una fecha dada)."
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/v1/usuario/{usuario_id}/post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"Java 11\",\r\n    \"descripcion\": \"Vino para quedarse\",\r\n    \"contenido\": \"Lorem ipsum dolor sit amet consectetur adipiscing\",\r\n    \"alta\": \"2020-12-25\",\r\n    \"publicado\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/usuario/2/post",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"2",
+								"post"
+							]
+						},
+						"description": "Es la creación de un post por medio de un endpoint de usuario en este caso se pasa como parámetro el id del usuario: 2."
 					},
 					"response": []
 				}
@@ -186,40 +218,6 @@
 					"response": []
 				},
 				{
-					"name": "/api/v1/usuario/2/post",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"titulo\": \"Java 11\",\n\t\"descripcion\": \"Vino para quedarse\",\n\t\"contenido\": \"Lorem ipsum dolor sit amet consectetur adipiscing\",\n\t\"alta\": \"2020-12-25\",\n\t\"publicado\": false\n}"
-						},
-						"url": {
-							"raw": "localhost:8080/api/v1/usuario/2/post",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"v1",
-								"usuario",
-								"2",
-								"post"
-							]
-						},
-						"description": "Es la creación de un post por medio de un endpoint de usuario en este caso se pasa como parámetro el id del usuario: 2."
-					},
-					"response": []
-				},
-				{
 					"name": "/api/v1/post/sin-publicar",
 					"request": {
 						"method": "GET",
@@ -243,7 +241,7 @@
 					"response": []
 				},
 				{
-					"name": "/api/v1/post/palabra-titulo/Java",
+					"name": "/api/v1/post/palabra-titulo/{palabra}",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -267,7 +265,7 @@
 					"response": []
 				},
 				{
-					"name": "/api/v1/post/2",
+					"name": "/api/v1/post/{usuario_id}",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -301,7 +299,7 @@
 					"response": []
 				},
 				{
-					"name": "/api/v1/post/1",
+					"name": "/api/v1/post/{post_id}",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -332,7 +330,7 @@
 					"response": []
 				},
 				{
-					"name": "/api/v1/post/1",
+					"name": "/api/v1/post/{post_id}",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -380,7 +378,7 @@
 					"response": []
 				},
 				{
-					"name": "/api/v1/comentario/1",
+					"name": "/api/v1/comentario/{post_id}",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -402,7 +400,7 @@
 					"response": []
 				},
 				{
-					"name": "/api/v1/comentario/1/2",
+					"name": "/api/v1/comentario/{post_id}/{limite}",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -425,7 +423,7 @@
 					"response": []
 				},
 				{
-					"name": "/api/v1/comentario/2/2",
+					"name": "/api/v1/comentario/{post_id}/{usuario_id}",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -460,7 +458,7 @@
 					"response": []
 				},
 				{
-					"name": "/api/v1/comentario/2",
+					"name": "/api/v1/comentario/{comentario_id}",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -491,7 +489,7 @@
 					"response": []
 				},
 				{
-					"name": "/api/v1/comentario/2",
+					"name": "/api/v1/comentario/{comentario_id}",
 					"request": {
 						"method": "DELETE",
 						"header": [],
