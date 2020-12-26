@@ -9,33 +9,31 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "post")
-public class Post {
+@Table(name = "comentario")
+public class Comentario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Column(nullable = false)
-    private String titulo;
-
-    @Column(nullable = false)
-    private String descripcion;
-
-    @Column(nullable = false)
-    private String contenido;
+    @Column(nullable = false, length = 200)
+    private String mensaje;
 
     @Temporal(TemporalType.DATE)
-    @Column(nullable = false)
+    @Column(updatable = false, nullable = false)
     private Calendar alta;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="autor", referencedColumnName = "id", nullable = false)
     private Usuario autor;
 
-    @Column(nullable = false, columnDefinition = "boolean default false")
-    private Boolean publicado;
+    @Column(nullable = false)
+    private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "post_id", referencedColumnName = "id", nullable = false)
+    private Post post;
 
     public Long getId() {
         return id;
@@ -45,28 +43,12 @@ public class Post {
         this.id = id;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getMensaje() {
+        return mensaje;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getContenido() {
-        return contenido;
-    }
-
-    public void setContenido(String contenido) {
-        this.contenido = contenido;
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
     }
 
     public String getAlta() {
@@ -87,19 +69,27 @@ public class Post {
         }
     }
 
-    public Boolean getPublicado() {
-        return publicado;
-    }
-
-    public void isPublicado(Boolean publicado) {
-        this.publicado = publicado;
-    }
-
     public Usuario getAutor() {
         return this.autor;
     }
 
     public void setAutor(Usuario autor) {
         this.autor = autor;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 }

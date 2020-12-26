@@ -39,7 +39,7 @@ public class Usuario {
     private String password;
 
     @Temporal(TemporalType.DATE)
-    @Column(updatable = false, nullable = false)
+    @Column(nullable = false)
     private Calendar alta;
 
     @Column(nullable = false)
@@ -136,5 +136,5 @@ public class Usuario {
     public void addPost(Post post) {
         this.posts.add(post);
         post.setAutor(this);
-      }
+    }
 }
