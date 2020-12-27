@@ -453,7 +453,7 @@
 								"2"
 							]
 						},
-						"description": "Consulta: para crear un comentario.\r\n\r\nAclración: aquí funciona a medias el endpoint, es decir crea el comentario, pero arroja un status code: 500, esto creo que está relacionado al tipo de inicialización del fetch = FetchType.LAZY en el modelo de comentario, pero no estoy seguro."
+						"description": "Consulta: para crear un comentario.\r\n\r\nAclración: aquí funciona a medias el endpoint, es decir crea el comentario, pero arroja un status code: 500, esto creo que está relacionado al tipo de inicialización del fetch = FetchType.LAZY en el modelo de comentario, pero no estoy segura."
 					},
 					"response": []
 				},

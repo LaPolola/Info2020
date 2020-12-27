@@ -16,7 +16,7 @@ En la descripción de los endpoint de Postman hay aclaraciones importantes. De i
 /api/v1/comentario/{post_id}/{usuario_id}
 ```
 
-**Aclaración**: aquí funciona a medias el endpoint, es decir crea el comentario, pero arroja un status code: 500, esto creo que está relacionado al tipo de inicialización del fetch = FetchType.LAZY en el modelo de comentario, pero no estoy seguro.
+**Aclaración**: aquí funciona a medias el endpoint, es decir crea el comentario, pero arroja un status code: 500, esto creo que está relacionado al tipo de inicialización del fetch = FetchType.LAZY en el modelo de comentario, pero no estoy segura.
 
 **Consulta**: Para crear Post lo hice de 2 formas con un endpoint de usuario y un endpoint de post
 
