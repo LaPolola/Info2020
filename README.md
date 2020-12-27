@@ -1,8 +1,9 @@
-# Info2020
-## Etapa III-JAVA
+# Info2020 🚀
+## Etapa III-JAVA 💪
 
 ### Proyecto final API Rest con Spring Boot.
 
+### Pre-requisitos 📋
 Crear base de datos nombre: **springboot**
 - **user**: root
 - **pass**: root
